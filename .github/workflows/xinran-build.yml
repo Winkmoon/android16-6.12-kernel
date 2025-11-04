@@ -63,8 +63,10 @@ jobs:
       - name: 初始化源码仓库
         run: |
           rm -rf kernel_workspace && mkdir kernel_workspace && cd kernel_workspace
+          git config --global user.email "3432632982@qq.com"
+          git config --global user.name "Winkmoon"
           repo init --depth 1 -u https://android.googlesource.com/kernel/manifest -b common-android16-6.12
-          repo sync -c -j$(nproc --all) --no-tags --no-clone-bundle --force-sync
+          repo sync -c -j$(nproc --all) --no-tags --no-clone-bundle --force-sync -v
           rm -rf common
           echo "正在克隆源码仓库..."
           git clone --depth=1 https://github.com/Winkmoon/android16-6.12-kernel.git common -b android16-6.12-2025-06
